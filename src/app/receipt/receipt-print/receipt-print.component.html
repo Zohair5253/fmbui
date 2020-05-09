@@ -1,18 +1,18 @@
 <!-- head -->
 <div style="text-align: center;">
-  <img src="../../../assets/images/fmb-logo-red.png" alt="" style="height: 60px;">
+  <img src="./assets/images/fmb-logo-red.png" alt="" style="height: 60px;">
   <!-- <h1>Faizul Mawaidil Burhaniyah</h1> -->
 </div>
 <br>
 <br>
-<div class="row" style="margin: 0px;">
+<div class="row" style="margin: 0px;" *ngIf="receipt!=null">
   <!-- Receipt Number -->
   <div class="col-md-3" style="float: left;">
     <label style="margin-left: 5px;">Receipt Number:  </label> <span> {{receipt.receiptNumber}}</span>
   </div>
   <!-- Date on right corner -->
   <div class="col-md-3" style="float: right;">
-    <label style="margin-left: 5px;">Date: </label> <span>  {{receipt.date | date:shortDate }}</span>
+    <label style="margin-left: 5px;">Date: </label> <span>  {{receipt.date | date:shortDate}}</span>
   </div>
 
 </div>
