@@ -1,0 +1,47 @@
+<section class="content-header">
+  <h1>List Delivery Men</h1>
+</section>
+
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12" style="text-align: center;">
+      <div class="box">
+        <div class="box-body">
+          <div id="deliveryManList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+
+            <table id="deliveryManList" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+              class="row-border hover display stripe">
+              <thead>
+                <tr>
+                  <th style="text-align: center;">Sr No.</th>
+                  <th style="text-align: center;">Name</th>
+                  <th style="text-align: center;">Middle Name</th>
+                  <th style="text-align: center;">Mobile Number</th>
+                  <th style="text-align: center;">Area</th>
+                  <th style="text-align: center;">Address</th>
+                  <th style="text-align: center;">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let dm of deliveryMen; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ dm.firstName }} {{dm.lastName}}</td>
+                  <td>{{ dm.middleName }}</td>
+                  <td>{{ dm.mobileNumber }}</td>
+                  <td>{{ dm.area }}</td>
+                  <td>{{ dm.address }}</td>
+                  <td>
+                    <button type="button" class="btn bg-navy btn-xs" (click)="updateDeliveryMan(dm.deliveryManId)"
+                      style="margin-right: 5px;"><i class="fa fa-edit"></i></button>
+                    <button type="button" class="btn btn-danger btn-xs" (click)="deleteDeliveryMan(dm)"><i
+                        class="fa fa-trash"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

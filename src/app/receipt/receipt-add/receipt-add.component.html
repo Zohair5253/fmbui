@@ -1,0 +1,88 @@
+<section class="content-header">
+  <h1>Create a New Receipt</h1>
+</section>
+
+<section class="content">
+  <div class="box box-primary">
+    <form [formGroup]="receiptForm" (ngSubmit)="onSubmit()">
+      <div class="box-body">
+        <div class="row">
+          <!-- <div class="col-md-12 box-header">
+            <h3 class="box-title section-title">Basic Details</h3>
+            <hr class="section-title-line" >
+          </div> -->
+          <div class="col-md-6">
+            
+            <!-- ============ Receipt Number ============ -->
+            <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && f.receiptNumber.errors }">
+              <label for="receiptNumber">Receipt Number</label>
+              <input type="text" formControlName="receiptNumber" class="form-control" id="receiptNumber"
+                placeholder="Receipt Number" />
+              <span *ngIf="isSubmitted && f.receiptNumber.errors" class="help-block">
+                <div *ngIf="f.receiptNumber.errors.required">Receipt Number is required</div>
+              </span>
+            </div>
+            <!-- ============ Consumer ============ -->
+            <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && f.consumerAccountId.errors }">
+              <label for="consumerAccountId">Consumer</label>
+              <ng-select [items]="consumerAccounts" [allowClear]="true" style="width: 100%;"
+                placeholder="Select Consumer" formControlName="consumerAccountId"></ng-select>
+                <span *ngIf="isSubmitted && f.consumerAccountId.errors" class="help-block">
+                  <div *ngIf="f.consumerAccountId.errors.required">Consumer is required.</div>
+                </span>
+            </div> 
+            <!-- ============ Payment Mode ============ -->
+            <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && f.paymentMode.errors }">
+              <label for="paymentMode">Payment Mode</label>
+              <ng-select [items]="paymentModes" [allowClear]="true"  style="width: 100%;"
+                placeholder="Select Payment Mode" formControlName="paymentMode"></ng-select>
+              <span *ngIf="isSubmitted && f.paymentMode.errors" class="help-block">
+                <div *ngIf="f.paymentMode.errors.required">Payment Mode is required.</div>
+              </span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <!-- ============ Date ============ -->
+            <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && f.date.errors }">
+              <label for="date">Date</label>
+              <input type="date" formControlName="date" class="form-control" id="date"/>
+                <!-- <div class="input-group date">
+                  <input type="text" class="form-control pull-left" id="datepicker">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                </div> -->
+              <span *ngIf="isSubmitted && f.date.errors" class="help-block">
+                <div *ngIf="f.date.errors.required">Date is required</div>
+                <!-- <div *ngIf="f.date.errors.pattern">Mobile Number must have 10 digits.</div> -->
+              </span>
+            </div>
+            <!-- ============ Amount ============ -->
+            <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && f.amount.errors }">
+              <label for="amount">Amount</label>
+              <input type="text" formControlName="amount" class="form-control" id="amount"
+                placeholder="Amount" />
+              <span *ngIf="isSubmitted && f.amount.errors" class="help-block">
+                <div *ngIf="f.amount.errors.required">Amount is required.</div>
+                <div *ngIf="f.amount.errors.pattern">Amount must have only digits.</div>
+              </span>
+            </div>
+            <!-- ============ Remarks ============ -->
+            <div class="form-group">
+              <label for="remarks">Remarks</label>
+              <input type="text" formControlName="remarks" class="form-control" id="remarks"
+                placeholder="Remarks" autocomplete="false" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="box-footer" style="text-align: center;">
+        <button type="button" (click)="onReset()" class="btn btn-primary" style="margin-right: 5px;">
+          <i class="fa fa-refresh" style="margin-right: 4px;"></i>Reset </button>
+        <button type="submit" class="btn btn-success" [disabled]="disableSubmit">
+          <i class="fa fa-send" style="margin-right: 4px;"></i>Submit</button>
+      </div>
+    </form>
+  </div>
+</section>

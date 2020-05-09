@@ -1,0 +1,84 @@
+
+<section class="content-header">
+  <h1 *ngIf="storedDeliveryMan != null">Update {{storedDeliveryMan.firstName}} {{storedDeliveryMan.lastName}}</h1>
+</section>
+
+<section class="content">
+  <div class="box box-primary">
+    <form [formGroup]="updateDeliveryManForm" (ngSubmit)="onSubmit()">
+      <div class="box-body">
+        <div class="row">
+          <!-- <div class="col-md-12 box-header">
+            <h3 class="box-title section-title">Basic Details</h3>
+            <hr class="section-title-line" >
+          </div> -->
+          <div class="col-md-6">
+            <!-- ============ First Name ============ -->
+            <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && f.firstName.errors }">
+              <label for="firstName">First Name</label>
+              <input type="text" formControlName="firstName" class="form-control" id="firstName"
+                placeholder="First Name" />
+              <span *ngIf="isSubmitted && f.firstName.errors" class="help-block">
+                <div *ngIf="f.firstName.errors.required">First Name is required</div>
+              </span>
+            </div>
+            <!-- ============ Last Name ============ -->
+            <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && f.lastName.errors }">
+              <label for="lastName">Last Name</label>
+              <input type="text" formControlName="lastName" class="form-control" id="lastName"
+                placeholder="Last Name" />
+              <span *ngIf="isSubmitted && f.lastName.errors" class="help-block">
+                <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+              </span>
+            </div>
+            <!-- ============ Area ============ -->
+            <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && f.area.errors }">
+              <label for="area">Area</label>
+              <ng-select [items]="areas" [allowClear]="true" [active]="[areas[0]]" style="width: 100%;"
+                placeholder="Select Area" formControlName="area"></ng-select>
+              <span *ngIf="isSubmitted && f.area.errors" class="help-block">
+                <div *ngIf="f.area.errors.required">Area is required.</div>
+              </span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <!-- ============ Middle Name ============ -->
+            <div class="form-group">
+              <label for="middleName">Middle Name</label>
+              <input type="text" formControlName="middleName" class="form-control" id="middleName"
+                placeholder="Middle Name" />
+            </div>
+            <!-- ============ Mobile Number ============ -->
+            <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && f.mobileNumber.errors }">
+              <label for="mobileNumber">Mobile Number</label>
+              <input type="text" formControlName="mobileNumber" class="form-control" id="mobileNumber"
+                placeholder="Mobile Number" />
+              <span *ngIf="isSubmitted && f.mobileNumber.errors" class="help-block">
+                <div *ngIf="f.mobileNumber.errors.required">Mobile Number is required</div>
+                <div *ngIf="f.mobileNumber.errors.pattern">Mobile Number must have 10 digits.</div>
+              </span>
+            </div>
+            <!-- ============ Address ============ -->
+            <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && f.address.errors }"
+              style="margin-bottom: 28px;">
+              <label for="address">Address</label>
+              <textarea rows="4" formControlName="address" class="form-control" id="address"
+                placeholder="Address"></textarea>
+              <span *ngIf="isSubmitted && f.address.errors" class="help-block">
+                <div *ngIf="f.address.errors.required">Address is required.</div>
+                <div *ngIf="f.address.errors.pattern">Address must have only digits.</div>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="box-footer" style="text-align: center;">
+        <button type="button" (click)="onReset()" class="btn btn-primary" style="margin-right: 5px;">
+          <i class="fa fa-refresh" style="margin-right: 4px;"></i>Reset </button>
+        <button type="submit" class="btn btn-success" [disabled]="disableSubmit">
+          <i class="fa fa-send" style="margin-right: 4px;"></i>Submit</button>
+      </div>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,75 @@
+<section class="content-header">
+  <h1>List Receipts for {{currentFY}}</h1>
+</section>
+
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12" style="text-align: center;">
+      <div class="box">
+        <div class="box-body">
+          <!-- <div class="row">
+            <div class="col-md-3 box-header" style="float:right">
+              <form [formGroup]="yearFilterForm" (ngSubmit)="filterConsumerAccounts()">
+                               
+                <div class="input-group margin">
+                  <ng-select [items]="financialYears" style="width: 100%;" placeholder="Select Financial Year"
+                  formControlName="year"></ng-select>
+                      <span class="input-group-btn">
+                        <button type="submit" class="btn btn-info btn-flat"><i
+                          class="fa fa-filter"></i></button>
+                      </span>
+                </div>
+              </form>
+            </div>
+            <div class="col-md-12">
+              <hr class="section-title-line">
+            </div>
+          </div> -->
+          <div class="row">
+            <div class="col-md-12">
+              <div id="receipt_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+    
+                <table id="receipt" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+                  class="row-border hover display stripe">
+                  <thead>
+                    <tr>
+                      <th style="text-align: center;">Sr No.</th>
+                      <th style="text-align: center;">Receipt No.</th>
+                      <th style="text-align: center;">Consumer</th>
+                      <th style="text-align: center;">Date</th>
+                      <th style="text-align: center;">Amount</th>
+                      <th style="text-align: center;">Payment Mode</th>
+                      <th style="text-align: center;">Taken By</th>
+                      <th style="text-align: center;">Remarks</th>
+                      <th style="text-align: center;">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let r of receipts; let i = index">
+                      <td>{{ i + 1 }}</td>
+                      <td>{{ r.receiptNumber}}</td>
+                      <td>{{ r.consumerName}}</td>
+                      <td>{{ r.date | date:shortDate}}</td>
+                      <td>{{r.amount}}</td>
+                      <td>{{ r.paymentMode }}</td>
+                      <td>{{r.takenBy }}</td>
+                      <td>{{ r.remarks }}</td>
+                      <td>
+                        <button type="button" class="btn bg-yellow btn-xs" (click)="printReceipt(r)"
+                          style="margin-right: 5px;"><i class="fa fa-print"></i></button>
+                        <button type="button" class="btn bg-navy btn-xs" (click)="updateReceipt(r.receiptId)"
+                          style="margin-right: 5px;"><i class="fa fa-edit"></i></button>
+                        <button type="button" class="btn btn-danger btn-xs" (click)="deleteReceipt(r)"><i
+                            class="fa fa-trash"></i></button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
